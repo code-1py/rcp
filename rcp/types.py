@@ -2,14 +2,25 @@ from enum import StrEnum
 
 class ScopeType(StrEnum):
     HTTP = "HTTP"
-    WEBTRANSPORT = "WEBTRANSPORT" # Reserved for future RCP versions
+    LIFESPAN = "LIFESPAN"
+    
+    # Reserved for future RCP versions
+    WEBTRANSPORT = "WEBTRANSPORT"
 
-class HTTPRequestType(StrEnum):
+class HTTPRequestEventType(StrEnum):
     REQUEST = "HTTP.REQUEST"
 
-class HTTPResponseType(StrEnum):
+class HTTPResponseEventType(StrEnum):
     START = "HTTP.RESPONSE.START"
     BODY = "HTTP.RESPONSE.BODY"
     TRAILERS = "HTTP.RESPONSE.TRAILERS"
     DISCONNECT = "HTTP.RESPONSE.DISCONNECT"
     DEBUG = "HTTP.RESPONSE.DEBUG"
+
+class LifespanEventType(StrEnum):
+    STARTUP = "LIFESPAN.STARTUP"
+    SHUTDOWN = "LIFESPAN.SHUTDOWN"
+    STARTUP_COMPLETE = "LIFESPAN.STARTUP.COMPLETE"
+    STARTUP_FAILED = "LIFESPAN.STARTUP.FAILED"
+    SHUTDOWN_COMPLETE = "LIFESPAN.SHUTDOWN.COMPLETE"
+    SHUTDOWN_FAILED = "LIFESPAN.SHUTDOWN.FAILED"
