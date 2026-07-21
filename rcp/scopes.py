@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .types import HTTPRequestEventType, HTTPResponseEventType, ScopeType, HTTPVersions
+from .types import HTTPConnectionEventType, HTTPResponseEventType, ScopeType, HTTPVersions
 from .methods import RequestMethod
 from typing import NotRequired ,Any, Literal, TypedDict
 from collections.abc import Awaitable, Callable, Iterable, MutableMapping
