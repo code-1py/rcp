@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-from .types import HTTPConnectionEventType, HTTPResponseEventType, ScopeType, HTTPVersions ,LifespanEventType
-from .methods import RequestMethod
-from typing import NotRequired ,Any, Literal, TypedDict
+from .types import HTTPConnectionEventType, HTTPResponseEventType, LifespanEventType
+from typing import NotRequired , Literal, TypedDict
 from collections.abc import Iterable
-from .rcp import RCP
-from .scheme import HTTPScheme
 
 Headers = Iterable[tuple[bytes, bytes]]
 
@@ -41,6 +38,8 @@ class HTTPResponseTrailersEvent(TypedDict):
 class HTTPDisconnectEvent(TypedDict):
     type: Literal[HTTPConnectionEventType.DISCONNECT]
 
+
+# Lifespan events
 class LifespanStartupEvent(TypedDict):
     type: Literal[LifespanEventType.STARTUP]
 
