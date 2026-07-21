@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .types import HTTPConnectionEventType, HTTPResponseEventType, ScopeType, HTTPVersions
+from .types import HTTPConnectionEventType, HTTPResponseEventType, ScopeType, HTTPVersions ,LifespanEventType
 from .methods import RequestMethod
 from typing import NotRequired ,Any, Literal, TypedDict
 from collections.abc import Iterable
@@ -40,3 +40,28 @@ class HTTPResponseTrailersEvent(TypedDict):
 
 class HTTPDisconnectEvent(TypedDict):
     type: Literal[HTTPConnectionEventType.DISCONNECT]
+
+class LifespanStartupEvent(TypedDict):
+    type: Literal[LifespanEventType.STARTUP]
+
+
+class LifespanShutdownEvent(TypedDict):
+    type: Literal[LifespanEventType.SHUTDOWN]
+
+
+class LifespanStartupCompleteEvent(TypedDict):
+    type: Literal[LifespanEventType.STARTUP_COMPLETE]
+
+
+class LifespanStartupFailedEvent(TypedDict):
+    type: Literal[LifespanEventType.STARTUP_FAILED]
+    message: str
+
+
+class LifespanShutdownCompleteEvent(TypedDict):
+    type: Literal[LifespanEventType.SHUTDOWN_COMPLETE]
+
+
+class LifespanShutdownFailedEvent(TypedDict):
+    type: Literal[LifespanEventType.SHUTDOWN_FAILED]
+    message: str
