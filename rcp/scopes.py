@@ -10,7 +10,7 @@ from .scheme import HTTPScheme
 Headers = Iterable[tuple[bytes, bytes]]
 
 class HTTPScope(TypedDict):
-    type: ScopeType
+    type: Literal[ScopeType.HTTP]
     rcp: RCP
     http_version: HTTPVersions
     method: RequestMethod
@@ -24,3 +24,8 @@ class HTTPScope(TypedDict):
     server: tuple[str, int | None] | None
     state: NotRequired[dict[str, Any]]
     extensions: NotRequired[dict[str, dict[object, object]]]
+
+class LifespanScope(TypedDict):
+    type: Literal[ScopeType.LIFESPAN]
+    rcp: RCP
+    state: NotRequired[dict[str, Any]]
