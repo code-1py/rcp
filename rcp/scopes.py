@@ -1,6 +1,26 @@
 from __future__ import annotations
 
-from .types import (HTTPRequestEventType,HTTPResponseEventType,ScopeType)
+from .types import HTTPRequestEventType, HTTPResponseEventType, ScopeType, HTTPVersions
 from .methods import RequestMethod
 from typing import NotRequired ,Any, Literal, TypedDict
+from collections.abc import Awaitable, Callable, Iterable, MutableMapping
+from .rcp import RCP
+from .scheme import HTTPScheme
 
+Headers = Iterable[tuple[bytes, bytes]]
+
+class HTTPScope(TypedDict):
+    type: ScopeType
+    rcp: RCP
+    http_version: HTTPVersions
+    method: RequestMethod
+    scheme: HTTPScheme
+    path: str
+    raw_path: bytes
+    query_string: bytes
+    root_path: str
+    headers: Headers
+    client: tuple[str, int] | None
+    server: tuple[str, int | None] | None
+    state: NotRequired[dict[str, Any]]
+    extensions: NotRequired[dict[str, dict[object, object]]]
