@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from .types import HTTPConnectionEventType, HTTPResponseEventType, ScopeType, HTTPVersions
+from .types import ScopeType, HTTPVersions
 from .methods import RequestMethod
 from typing import NotRequired ,Any, Literal, TypedDict
-from collections.abc import Awaitable, Callable, Iterable, MutableMapping
+from collections.abc import Iterable
 from .rcp import RCP
 from .scheme import HTTPScheme
 
