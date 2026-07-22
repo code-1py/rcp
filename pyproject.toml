@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rivora-rcp"
+version = "1.0.0"
+description = "Rivora Contract Protocol (RCP) interface specification."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+
+authors = [
+{ name = "code-1Py" }
+]
+
+keywords = [
+"rcp",
+"rivora",
+"riven",
+"http3",
+"quic",
+"aioquic",
+"framework",
+"server"
+]
+
+classifiers = [
+"Development Status :: 3 - Alpha",
+"Intended Audience :: Developers",
+"License :: OSI Approved :: MIT License",
+"Programming Language :: Python :: 3",
+"Programming Language :: Python :: 3.11",
+"Programming Language :: Python :: 3.12",
+"Programming Language :: Python :: 3.13",
+"Topic :: Internet",
+"Topic :: Software Development :: Libraries"
+]
+
+[project.urls]
+Homepage = "https://github.com/code-1py/rcp"
+Repository = "https://github.com/code-1py/rcp"
+Issues = "https://github.com/code-1py/rcp/issues"
+Changelog = "https://github.com/code-1py/rcp/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["."]

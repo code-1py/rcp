@@ -12,3 +12,6 @@ rcpenv/
 Logs/
 .vscode/
 known_bugs.py
+rivora_rcp.egg-info
+dist/
+rcp.egg-info/
