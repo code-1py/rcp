@@ -20,23 +20,39 @@ from collections.abc import Callable, Awaitable
 
 Scope = HTTPScope | LifespanScope
 
-RCPReceiveEvent = (
-    HTTPRequestEvent
-    | HTTPDisconnectEvent
-    | LifespanStartupEvent
+LifespanReceiveEvents = (
+    LifespanStartupEvent
     | LifespanShutdownEvent
 )
 
-RCPSendEvent = (
+LifespanSendEvents = (
+    LifespanStartupCompleteEvent
+    | LifespanStartupFailedEvent
+    | LifespanShutdownCompleteEvent
+    | LifespanShutdownFailedEvent
+)
+
+HTTPReceiveEvents = (
+    HTTPRequestEvent
+    | HTTPDisconnectEvent
+)
+
+HTTPSendEvents = (
     HTTPResponseStartEvent
     | HTTPResponseBodyEvent
     | HTTPResponseTrailersEvent
     | HTTPDisconnectEvent
-    | LifespanStartupCompleteEvent
-    | LifespanStartupFailedEvent
-    | LifespanShutdownCompleteEvent
-    | LifespanShutdownFailedEvent
     | HTTPResponseDebugEvent
+)
+
+RCPReceiveEvent = (
+    HTTPReceiveEvents
+    |LifespanReceiveEvents
+)
+
+RCPSendEvent = (
+    HTTPSendEvents
+    |LifespanSendEvents
 )
 
 RCPReceiveCallable = Callable[[], Awaitable[RCPReceiveEvent]]

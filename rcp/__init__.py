@@ -23,6 +23,10 @@ from .rcp_app import (
     RCPReceiveCallable,
     RCPReceiveEvent,
     RCPSendEvent,
+    LifespanSendEvents,
+    HTTPSendEvents,
+    LifespanReceiveEvents,
+    HTTPReceiveEvents,
     Scope
 )
 
@@ -33,6 +37,13 @@ from .types import (
     LifespanEventType,
     HTTPVersions
 )
+
+from .rcp import (
+    RCPVersions,
+    RCP
+)
+from .methods import RequestMethod
+from .scheme import HTTPScheme
 
 __all__ = [
     "HTTPRequestEvent",
@@ -59,7 +70,15 @@ __all__ = [
     "HTTPConnectionEventType",
     "HTTPResponseEventType",
     "LifespanEventType",
-    "HTTPVersions"
+    "HTTPVersions",
+    "RCPVersions",
+    "RequestMethod",
+    "HTTPScheme",
+    "RCP",
+    "LifespanReceiveEvents",
+    "HTTPReceiveEvents",
+    "LifespanSendEvents",
+    "HTTPSendEvents"
 ]
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"

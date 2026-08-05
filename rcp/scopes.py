@@ -15,6 +15,7 @@ class HTTPScope(TypedDict):
     http_version: HTTPVersions
     method: RequestMethod
     scheme: HTTPScheme
+    authority: str | None
     path: str
     raw_path: bytes
     query_string: bytes
@@ -29,3 +30,4 @@ class LifespanScope(TypedDict):
     type: Literal[ScopeType.LIFESPAN]
     rcp: RCP
     state: NotRequired[dict[str, Any]]
+    extensions: NotRequired[dict[str, dict[object, object]]]

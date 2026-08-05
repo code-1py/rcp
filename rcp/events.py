@@ -37,6 +37,7 @@ class HTTPResponseTrailersEvent(TypedDict):
 
 class HTTPDisconnectEvent(TypedDict):
     type: Literal[HTTPConnectionEventType.DISCONNECT]
+    reason: NotRequired[str]
 
 
 # Lifespan events
