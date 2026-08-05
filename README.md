@@ -4,7 +4,7 @@ RCP (Rivora Contract Protocol) is a lightweight interface specification that def
 
 RCP provides a contract between frameworks and servers while remaining independent of any specific implementation.
 
-Version 1.0 is designed for HTTP/3 and QUIC-based servers.
+RCP 1.0 is designed for HTTP/3 and QUIC-based servers.
 
 ## Repository
 
@@ -143,7 +143,7 @@ class HTTPScope(TypedDict):
 
     method: RequestMethod
     scheme: HTTPScheme
-
+    authority: str | None
     path: str
     raw_path: bytes
     query_string: bytes
@@ -160,22 +160,23 @@ class HTTPScope(TypedDict):
 
 ### Fields
 
-| Field        | Description                    |
-| ------------ | ------------------------------ |
-| type         | Scope type                     |
-| rcp          | RCP version information        |
-| http_version | HTTP protocol version          |
-| method       | Request method                 |
-| scheme       | Request scheme                 |
-| path         | Decoded request path           |
-| raw_path     | Original path bytes            |
-| query_string | Raw query string               |
-| root_path    | Mounted root path              |
-| headers      | Request headers                |
-| client       | Client address and port        |
-| server       | Server address and port        |
-| state        | Shared request state           |
-| extensions   | Optional protocol capabilities |
+| Field        | Description                     |
+| ------------ | ------------------------------- |
+| type         | Scope type                      |
+| rcp          | RCP version information         |
+| http_version | HTTP protocol version           |
+| method       | Request method                  |
+| scheme       | Request scheme                  |
+| authority    | HTTP/3 `:authority` pseudo-header |
+| path         | Decoded request path            |
+| raw_path     | Original path bytes             |
+| query_string | Raw query string                |
+| root_path    | Mounted root path               |
+| headers      | Request headers                 |
+| client       | Client address and port         |
+| server       | Server address and port         |
+| state        | Shared request state            |
+| extensions   | Optional protocol capabilities  |
 
 ---
 
@@ -187,6 +188,7 @@ class LifespanScope(TypedDict):
     rcp: RCP
 
     state: NotRequired[dict[str, Any]]
+    extensions: NotRequired[dict[str, dict[object, object]]]
 ```
 
 Used during application startup and shutdown.
@@ -292,9 +294,18 @@ Servers may ignore this event.
 
 ```python
 {
-    "type": HTTPConnectionEventType.DISCONNECT
+    "type": HTTPConnectionEventType.DISCONNECT,
+    "reason": "Connection closed"
 }
 ```
+`reason` is optional and may be omitted.
+
+### Fields
+
+| Field     | Description                |
+| --------- | -------------------------- |
+| type      | Event type                 |
+| reason    | Optional disconnect reason |
 
 ### Receive
 
