@@ -4,14 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rivora-rcp"
-version = "1.0.2"
+version = "1.0.3"
 description = "Rivora Contract Protocol (RCP) interface specification."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 
 authors = [
-    { name = "code-1Py" }
+    { name = "Bhavya Malhotra" }
 ]
 
 keywords = [
@@ -28,7 +29,6 @@ keywords = [
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
